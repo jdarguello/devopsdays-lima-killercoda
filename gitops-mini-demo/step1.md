@@ -1,0 +1,3 @@
+# Instalación de FluxCD
+
+Lo primero que debemos hacer será instalar FluxCD. Para ello, 

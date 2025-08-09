@@ -1,0 +1,20 @@
+{
+    "title": "GitOps Base-Demo",
+    "description": "Vinculación de clúster de Kubernetes con un repositorio Git",
+    "details": {
+      "intro": {
+        "text": "intro.md"
+      },
+      "steps": [
+        {
+          "text": "step1.md"
+        }
+      ],
+      "finish": {
+        "text": "finish.md"
+      }
+    },
+    "backend": {
+      "imageid": "kubernetes-kubeadm-1node-4GB"
+    }
+  }

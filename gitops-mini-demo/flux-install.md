@@ -1,10 +1,10 @@
 ## Instalación de FluxCD
 
-Lo primero que haremos será instalar FluxCD y relacionarlo con un repositorio GitHub, acorde a lo definido en la [documentación oficial](https://fluxcd.io/flux/installation/bootstrap/github/). 
+En este punto,ya tenemos nuestro repositorio listo. A continuación, instalaremos Flux CLI para relacionar nuestro clúster de K8s con el repositorio GitHub, acorde a lo definido en la [documentación oficial](https://fluxcd.io/flux/installation/bootstrap/github/). 
 
-### 1. Instalar el Flux CLI
+### 1. Instalar Flux CLI
 
-El Flux CLI está disponible como un binario ejecutable. Sólo debemos ejecutar el siguiente comando:
+El Flux CLI está disponible como un binario que podemos instalar ejecutando el siguiente comando:
 
 ```bash
 curl -s https://fluxcd.io/install.sh | sudo bash
@@ -12,7 +12,7 @@ curl -s https://fluxcd.io/install.sh | sudo bash
 
 ### 2. Flux Bootstrap
 
-Flux CLI contiene un comando con el que podemos vincular cualquier repositorio para vincularlo al clúster. Para nuestra demo, podremos vincular el repositorio que gestionamos (`flux-demo`) ejecutando el siguiente comando:
+Flux CLI contiene un comando con el que podemos vincular cualquier repositorio con nuestro clúster. Para nuestra demo, podremos vincular el repositorio que gestionamos (`flux-demo`) a través del siguiente comando:
 
 ```bash
 flux bootstrap github \
@@ -23,4 +23,8 @@ flux bootstrap github \
   --path=infra/gitops \
   --personal
 ```{{copy}}
+
+Esperamos a que finalice la reconciliación. Si finalizó de manera exitosa, nos aparecerá el mensaje `✔ all components are healthy`. 
+
+En este punto, ya tenemos sincronizado nuestro clúster con el repositorio GitHub que bautizamos como __`flux-demo`__ ✌🏻
 

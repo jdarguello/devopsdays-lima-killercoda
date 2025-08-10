@@ -56,7 +56,7 @@ Sólo el `kustomization.yaml` nos interesará de aquí en adelante; ya que dentr
 Como vimos en la estructura propuesta, necesitamos crear dos carpetas: `infra` y `gitops` dentro de ella. Podemos hacerlo ejecutando el siguiente comando:
 
 ```bash
-cd flux-demo
+cd ~/flux-demo
 mkdir infra
 cd infra
 mkdir gitops

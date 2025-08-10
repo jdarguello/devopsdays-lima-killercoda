@@ -96,10 +96,10 @@ Ahora, sólo debemos guardar los cambios en el repositorio:
 
 ```bash
 cd ~/flux-demo
-git add .
-git commit -m "adecuación del repositorio - gitops"
+git branch -M main
 git config --global user.email "$GITHUB_USERNAME@github.com"
 git config --global user.name "$GITHUB_USERNAME"
-git branch -M main
+git add .
+git commit -m "adecuación del repositorio - gitops"
 git push -u origin main
 ```{{exec}}

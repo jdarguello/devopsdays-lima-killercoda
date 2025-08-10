@@ -45,6 +45,8 @@ infra/
   |     ├── gotk-components.yaml
   |     ├── gotk-sync.yaml
   |     ├── kustomization.yaml
+README.md
+LICENSE
 ```
 
 Tanto `gotk-components.yaml` como `gotk-sync.yaml` son archivos informativos dentro del proceso de adecuación de Flux (también conocido como [Bootstrap](https://fluxcd.io/flux/installation/bootstrap/)). 
@@ -102,4 +104,5 @@ git config --global user.name "$GITHUB_USERNAME"
 git add .
 git commit -m "adecuación del repositorio - gitops"
 git push -u origin main
+cd ~
 ```{{exec}}

@@ -88,14 +88,18 @@ Esto nos abrirá un editor de texto. Sólo debemos pegar y guardar el siguiente 
 apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 resources: []
-```
+```{{copy}}
 
 #### 3.4. Subir cambios (push)
 
 Ahora, sólo debemos guardar los cambios en el repositorio:
 
 ```bash
+cd ~/flux-demo
 git add .
 git commit -m "adecuación del repositorio - gitops"
-git push
+git config --global user.email "$GITHUB_USERNAME"
+git config --global user.name "$GITHUB_USERNAME"
+git branch -M main
+git push -u origin main
 ```{{exec}}

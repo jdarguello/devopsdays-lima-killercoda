@@ -7,7 +7,10 @@
       },
       "steps": [
         {
-          "text": "step1.md"
+          "text": "repo.md"
+        },
+        {
+          "text": "flux-install.md"
         }
       ],
       "finish": {
@@ -16,5 +19,8 @@
     },
     "backend": {
       "imageid": "kubernetes-kubeadm-2nodes"
+    },
+    "interface": {
+      "layout": "ide"
     }
   }

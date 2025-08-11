@@ -34,7 +34,7 @@ apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 resources: 
 - ../frontend/
-- ../backend
+- ../backend/
 ```{{copy}}
 
 Para los desarrollos `frontend` y `backend`, basta en este punto con crear los manifiestos de K8s vacíos. En las secciones posteriores, analizaremos en detalle qué debe incluir cada uno. Esta estructura se puede crear ejecutando los siguientes comandos.
@@ -52,6 +52,14 @@ touch kustomization.yaml
 touch auth-deploy.yaml
 touch auth-service.yaml
 cd ~/flux-demo
+```{{copy}}
+
+Para cada uno de los `kustomization.yaml` de los desarrollos frontend (__`infra/frontend/kustomization.yaml`__) y backend (__`infra/backend/kustomization.yaml`__) vamos a instanciarlos de la siguiente forma, de manera provisional:
+
+```yaml
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+resources: []
 ```{{copy}}
 
 ### 2. Despliegue del `frontend-pod`
@@ -74,6 +82,7 @@ metadata:
   labels:
     run: frontend
   name: frontend
+  namespace: default
 spec:
   containers:
   - image: nginx
@@ -121,6 +130,7 @@ metadata:
   labels:
     app: auth-micro
   name: auth-micro
+  namespace: default
 spec:
   replicas: 2
   selector:
@@ -169,7 +179,7 @@ En este punto, podemos empezar a hacer trazabilidad de los cambios. Sólo debemo
 cd ~/flux-demo
 git pull
 git add .
-git commit -m "definición de desarrollo frontend"
+git commit -m "definición de desarrollo backend"
 git push
 ```{{exec}}
 

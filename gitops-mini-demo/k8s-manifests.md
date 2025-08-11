@@ -2,7 +2,9 @@
 
 Llegados a este punto, ya tenemos nuestro repositorio listo y vinculado con nuestro clúster. Ahora, veremos un par de ejemplos para desplegar un `pod` y un `deployment` en nuestro clúster a través de nuestro repositorio GitHub de forma declarativa.
 
-En esta sección, se recomienda usar el __editor__ habilitado con VSCode para facilitar la experiencia. __Nota:__ como no contamos (en este demo en específico) con imágenes pre-definidas, haremos nuestras pruebas con una imagen Docker genérica: __`nginx`__.
+En esta sección, se recomienda usar el __editor__ habilitado con VSCode para facilitar la experiencia. 
+
+__Nota:__ como no contamos (en este demo en específico) con imágenes pre-definidas, haremos nuestras pruebas con una imagen Docker genérica: __`nginx`__.
 
 ### 1. Adecuación del proyecto
 
@@ -84,6 +86,7 @@ En este punto, podemos empezar a hacer trazabilidad de los cambios. Sólo debemo
 
 ```bash
 cd ~/flux-demo
+git pull
 git add .
 git commit -m "definición de desarrollo frontend"
 git push
@@ -164,8 +167,9 @@ En este punto, podemos empezar a hacer trazabilidad de los cambios. Sólo debemo
 
 ```bash
 cd ~/flux-demo
+git pull
 git add .
-git commit -m "definición de desarrollo backend"
+git commit -m "definición de desarrollo frontend"
 git push
 ```{{exec}}
 

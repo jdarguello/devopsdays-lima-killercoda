@@ -11,6 +11,9 @@
         },
         {
           "text": "flux-install.md"
+        },
+        {
+          "text": "k8s-manifests.md"
         }
       ],
       "finish": {

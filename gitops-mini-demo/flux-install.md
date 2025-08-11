@@ -24,7 +24,6 @@ flux bootstrap github \
   --personal
 ```{{copy}}
 
-Esperamos a que finalice la reconciliación. Si finalizó de manera exitosa, nos aparecerá el mensaje `✔ all components are healthy`. 
+Esperamos a que finalice la reconciliación. Si finalizó de manera exitosa, nos aparecerá el mensaje `✔ all components are healthy`. Adicional, si ejecutas `k get ns`{{exec}} deberías ver un namespace de K8s con el nombre: `flux-system`.
 
 En este punto, ya tenemos sincronizado nuestro clúster con el repositorio GitHub que bautizamos como __`flux-demo`__ ✌🏻
-

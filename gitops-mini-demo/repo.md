@@ -12,7 +12,7 @@ Figura 1. Metadata del repo a crear.
 
 ### 2. Credenciales de GitHub
 
-Como vamos a relacionar un repositorio GitHub con nuestro clúster, lo primero que necesitamos es un token válido con nuestras credenciales para que el clúster pueda acceder a la información contenida en el repo y definir el __estado deseado__ que genere el proceso de _reconciliación_ respecto al estado actual de nuestra infraestructura.
+Como vamos a relacionar un repositorio GitHub con nuestro clúster, lo primero que necesitamos es un token válido con nuestras credenciales. Con ello, el clúster podrá acceder a la información contenida en el repo y definir el __estado deseado__, que emplea el proceso de _reconciliación_ respecto al estado actual para producir los cambios en nuestra infraestructura.
 
 Una vez tengamos el token generado, lo almacenamos en un environment variable ejecutando el siguiente comando y reemplazando el `<gh-token>` por el token generado.
 

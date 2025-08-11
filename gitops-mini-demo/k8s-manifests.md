@@ -43,8 +43,9 @@ mkdir frontend
 cd frontend/
 touch kustomization.yaml
 touch frontend-pod.yaml
+cd ..
 mkdir backend
-cd ../backend/
+cd backend/
 touch kustomization.yaml
 touch auth-deploy.yaml
 touch auth-service.yaml
@@ -88,6 +89,88 @@ git commit -m "definición de desarrollo frontend"
 git push
 ```{{exec}}
 
+En teoría, si ejecutamos `k get pods`{{copy}} deberíamos ser capaces de ver el pod que acabamos de definir y subir al repo. Si todavía no está disponible, significa que FluxCD aún no ha hecho el proceso de reconciliación (proceso que lleva a cabo cada 5 minutos). Es posible forzar a Flux a realizar dicho proceso ejecutando el siguiente comando:
+
+```bash
+flux reconcile source git flux-system -n flux-system
+```{{copy}}
+
 ### 3. Desarrollo backend
 
-Para el desarrollo backend
+Para el desarrollo backend, vamos a craer un `deployment` y desplegarlo con un `service`. Para este caso, supondremos que se trata de un microservicio de autenticación/autorización (auth). 
+
+De manera similar al frontend, empezaremos por definir el `kustomization.yaml` para declarar los manifiestos de K8s que deseamos desplegar con GitOps.
+
+```yaml
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+resources: 
+- auth-deploy.yaml
+- auth-service.yaml
+```{{copy}}
+
+Ahora, definiremos el `deployment`, modificando el archivo __`auth-deploy.yaml`__ de la siguiente forma:
+
+```yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: auth-micro
+  name: auth-micro
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: auth-micro
+  template:
+    metadata:
+      labels:
+        app: auth-micro
+    spec:
+      containers:
+      - image: nginx
+        name: nginx
+```{{copy}}
+
+Para el `service`, modificaremos el archivo __`auth-service.yaml`__ de la siguiente forma:
+
+```yaml
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: auth-micro
+  name: auth-micro
+  namespace: default
+spec:
+  internalTrafficPolicy: Cluster
+  ipFamilies:
+  - IPv4
+  ipFamilyPolicy: SingleStack
+  ports:
+  - port: 8080
+    protocol: TCP
+    targetPort: 8080
+  selector:
+    app: auth-micro
+  sessionAffinity: None
+  type: ClusterIP
+```{{copy}}
+
+#### 3.1. Subida de cambios
+
+En este punto, podemos empezar a hacer trazabilidad de los cambios. Sólo debemos hacer `push` de lo que llevamos hasta ahora ejecutando los siguientes comandos:
+
+```bash
+cd ~/flux-demo
+git add .
+git commit -m "definición de desarrollo backend"
+git push
+```{{exec}}
+
+En teoría, si ejecutamos `k get all`{{copy}} deberíamos ser capaces de ver los pods, deployments y services que acabamos de definir y subir al repo. Si todavía no están disponibles, significa que FluxCD aún no ha hecho el proceso de reconciliación (proceso que lleva a cabo cada 5 minutos). Es posible forzar a Flux a realizar dicho proceso ejecutando el siguiente comando:
+
+```bash
+flux reconcile source git flux-system -n flux-system
+```{{copy}}

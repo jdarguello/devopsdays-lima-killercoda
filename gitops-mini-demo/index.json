@@ -1,6 +1,6 @@
 {
     "title": "GitOps Base-Demo",
-    "description": "Vinculación de clúster de Kubernetes con un repositorio Git",
+    "description": "Vinculación de un repositorio Git con un clúster de K8s",
     "details": {
       "intro": {
         "text": "intro.md"

@@ -1,29 +1,29 @@
 {
-    "title": "GitOps Base-Demo",
-    "description": "Vinculación de un repositorio Git con un clúster de K8s",
-    "details": {
-      "intro": {
-        "text": "intro.md"
+  "title": "GitOps Base-Demo",
+  "description": "Vinculación de un repositorio Git con un clúster de K8s",
+  "details": {
+    "intro": {
+      "text": "intro.md"
+    },
+    "steps": [
+      {
+        "text": "repo.md"
       },
-      "steps": [
-        {
-          "text": "repo.md"
-        },
-        {
-          "text": "flux-install.md"
-        },
-        {
-          "text": "k8s-manifests.md"
-        }
-      ],
-      "finish": {
-        "text": "finish.md"
+      {
+        "text": "flux-install.md"
+      },
+      {
+        "text": "k8s-manifests.md"
       }
-    },
-    "backend": {
-      "imageid": "kubernetes-kubeadm-2nodes"
-    },
-    "interface": {
-      "layout": "ide"
+    ],
+    "finish": {
+      "text": "finish.md"
     }
+  },
+  "backend": {
+    "imageid": "kubernetes-kubeadm-2nodes"
+  },
+  "interface": {
+    "layout": "ide"
   }
+}

@@ -4,11 +4,15 @@
   "details": {
     "intro": {
       "text": "intro.md",
-      "background": "background/aws-cli.sh"
+      "background": "background/installers.sh"
     },
     "steps": [
       {
         "text": "aws-creds.md"
+      },
+      {
+        "text": "demo-micro-backstage.md", 
+        "foreground": "background/cli.sh"
       }
     ],
     "finish": {

@@ -20,6 +20,6 @@ aws eks update-kubeconfig --region us-east-1 --name Cuentas-Cluster
 
 Si ejecuta de forma exitosa, de aquí en adelante todos los comandos de K8s que ejecutes serán contra el clúster de __Cuentas-Cluster__ en AWS EKS. Por ejemplo, deberías poder listar los namespaces de la cuenta sin problema con `k get ns`{{exec}} y encontrar namesapces como `flux-system` o `crossplane-system`, que indican la instalación de estos componentes dentro del clúster.
 
-### 2. Acceso a recursos de AWS
+### 2. Acceso a otros recursos
 
-De aquí en adelante, podrías estar tentado a contrastar los resultados con respecto a la __consola de AWS__, de la cual también tienes acceso. Sólo debes usar las credenciales recibidas, vía correo electrónico, para validar los recursos que se creen; principalmente: EKS, EC2 y RDS.
+De aquí en adelante, tendremos acceso a la __consola de AWS__ para validar las operaciones que ejecutemos en nuestro paso a paso. Sólo tendremos que usar las credenciales recibidas, vía correo electrónico, para validar los recursos que se creen; principalmente: EKS, EC2 y RDS.

@@ -11,8 +11,12 @@
         "text": "aws-creds.md"
       },
       {
-        "text": "demo-micro-backstage.md", 
+        "text": "demo-micro-manual.md",
         "foreground": "background/cli.sh"
+      },
+      {
+        "text": "demo-micro-backstage.md", 
+        "backend": "background/backstage-setup.sh"
       }
     ],
     "finish": {

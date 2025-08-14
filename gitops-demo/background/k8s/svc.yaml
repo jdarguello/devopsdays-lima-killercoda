@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    run: backstage
+  name: backstage
+spec:
+  ports:
+  - port: 80
+    protocol: TCP
+    targetPort: 7007
+  selector:
+    run: backstage
+status:
+  loadBalancer: {}

@@ -1,0 +1,17 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  labels:
+    run: backstage
+  name: backstage
+spec:
+  containers:
+  - image: ghcr.io/jdarguello/cloudmanager:0.3
+    name: backstage
+    ports:
+    - name: http
+      containerPort: 7007
+    resources: {}
+  dnsPolicy: ClusterFirst
+  restartPolicy: Always
+status: {}

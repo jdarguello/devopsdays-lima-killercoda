@@ -18,7 +18,7 @@ Primero, debemos averiguar cuál es el puerto expuesto por el _ingress controlle
 ```bash
 export current_context=$(k config current-context)
 k config set-context kubernetes-admin@kubernetes
-export node_port=$(k get -n ingress-nginx svc/ingress-nginx-controller -o jsonpath="{.items[0].spec.ports[0].nodePort}")
+export node_port=$(k get -n ingress-nginx svc/ingress-nginx-controller -o jsonpath="{.spec.ports[0].nodePort}")
 echo "Puerto = $node_port"
 k config set-context $current_context
 ```{{exec}}

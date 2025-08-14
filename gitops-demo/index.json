@@ -16,7 +16,7 @@
       },
       {
         "text": "demo-micro-backstage.md", 
-        "backend": "background/backstage-setup.sh"
+        "foreground": "background/backstage-setup.sh"
       }
     ],
     "finish": {

@@ -13,7 +13,7 @@ k config set-context $current_context
 
 ### 1. Abrir Backstage
 
-Primero, debemos averiguar cuál es el puerto expuesto por el _ingress controller_ (Nginx). Este puerto varía de una sesión a otra, por lo que deberás averiguarlo ejecutando el siguiente comando.
+Primero, debemos averiguar cuál es el puerto expuesto por el _ingress controller_ (Nginx). Este puerto varía de una sesión a otra, por lo que deberás averiguarlo ejecutando el siguiente comando (el resultado está expuesto en __Puerto = <node_port>__).
 
 ```bash
 export current_context=$(k config current-context)
@@ -25,6 +25,16 @@ k config set-context $current_context
 
 Para abrir Backstage, debes abrir la opción de __"Traffic / Ports"__ en la sección de configuración, como se muestra en la Figura 1.
 
-[](https://killercoda.com/assets/network-traffic-CK8NkBtY.png)
+[](./images/ports.png)
 
-Figura 1. 
+Figura 1. Sección de configuración.
+
+Una vez hagas click en esa opción, te abrirá la ventana de la Figura 2. Lo único que debes hacer es pegar el puerto, obtenido al principio de este capítulo, en la sección de __Custom Ports__ y dar click en _Access_. Con ello, te abrirá la aplicación de Backstage.
+
+[](./images/traffic.png)
+
+Figura 2. Configuración del puerto de acceso.
+
+### 2. Interacción con Backstage
+
+En este punto, ya tienes acceso a Backstage y puedes interactuar con la plataforma a voluntad. 

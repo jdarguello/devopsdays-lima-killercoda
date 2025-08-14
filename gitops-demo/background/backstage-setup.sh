@@ -14,7 +14,7 @@ metadata:
   name: backstage
 spec:
   containers:
-  - image: ghcr.io/jdarguello/cloudmanager:0.3
+  - image: ghcr.io/jdarguello/cloudmanager:0.4
     name: backstage
     ports:
     - name: http

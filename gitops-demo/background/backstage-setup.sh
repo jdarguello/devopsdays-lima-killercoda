@@ -1,5 +1,3 @@
-pwd
-
 #Obtener el cluster actual
 export current_context=$(k config current-context)
 

@@ -37,4 +37,4 @@ Figura 2. Configuración del puerto de acceso.
 
 ### 2. Interacción con Backstage
 
-En este punto, ya tienes acceso a Backstage y puedes interactuar con la plataforma a voluntad. 
+En este punto, ya tienes acceso a Backstage y puedes interactuar con la plataforma a voluntad. La recomendación es que te enfoques en la edición de los templates expuestos para la creación del microservicio.

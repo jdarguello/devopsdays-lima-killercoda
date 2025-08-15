@@ -26,7 +26,7 @@ spec:
         app: backstage
     spec:
       containers:
-      - image: ghcr.io/jdarguello/cloudmanager:0.6
+      - image: ghcr.io/jdarguello/cloudmanager:0.7
         name: backstage
         ports:
         - name: http

@@ -20,6 +20,22 @@ spec:
     - name: http
       containerPort: 7007
     resources: {}
+    env:
+    - name: GITHUB_TOKEN
+      valueFrom:
+        secretKeyRef:
+          name: backstage-secrets
+          key: GITHUB_TOKEN
+    - name: AUTH_GITHUB_CLIENT_ID
+      valueFrom:
+        secretKeyRef:
+          name: backstage-secrets
+          key: AUTH_GITHUB_CLIENT_ID
+    - name: AUTH_GITHUB_CLIENT_SECRET
+      valueFrom:
+        secretKeyRef:
+          name: backstage-secrets
+          key: AUTH_GITHUB_CLIENT_SECRET
   dnsPolicy: ClusterFirst
   restartPolicy: Always
 status: {}

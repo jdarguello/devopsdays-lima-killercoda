@@ -59,7 +59,7 @@ apiVersion: v1
 kind: Service
 metadata:
   labels:
-    run: backstage
+    app: backstage
   name: backstage
 spec:
   ports:
@@ -67,7 +67,7 @@ spec:
     protocol: TCP
     targetPort: 7007
   selector:
-    run: backstage
+    app: backstage
 status:
   loadBalancer: {}
 EOF

@@ -6,38 +6,50 @@ k config set-context kubernetes-admin@kubernetes
 
 #Pod creation
 kubectl apply -f - <<'EOF'
-apiVersion: v1
-kind: Pod
+apiVersion: apps/v1
+kind: Deployment
 metadata:
+  creationTimestamp: null
   labels:
-    run: backstage
+    app: backstage
   name: backstage
 spec:
-  containers:
-  - image: ghcr.io/jdarguello/cloudmanager:0.4
-    name: backstage
-    ports:
-    - name: http
-      containerPort: 7007
-    resources: {}
-    env:
-    - name: GITHUB_TOKEN
-      valueFrom:
-        secretKeyRef:
-          name: backstage-secrets
-          key: GITHUB_TOKEN
-    - name: AUTH_GITHUB_CLIENT_ID
-      valueFrom:
-        secretKeyRef:
-          name: backstage-secrets
-          key: AUTH_GITHUB_CLIENT_ID
-    - name: AUTH_GITHUB_CLIENT_SECRET
-      valueFrom:
-        secretKeyRef:
-          name: backstage-secrets
-          key: AUTH_GITHUB_CLIENT_SECRET
-  dnsPolicy: ClusterFirst
-  restartPolicy: Always
+  replicas: 1
+  selector:
+    matchLabels:
+      app: backstage
+  strategy: {}
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: backstage
+    spec:
+      containers:
+      - image: ghcr.io/jdarguello/cloudmanager:0.4
+        name: backstage
+        ports:
+        - name: http
+          containerPort: 7007
+        resources: {}
+        env:
+        - name: GITHUB_TOKEN
+          valueFrom:
+            secretKeyRef:
+              name: backstage-secrets
+              key: GITHUB_TOKEN
+        - name: AUTH_GITHUB_CLIENT_ID
+          valueFrom:
+            secretKeyRef:
+              name: backstage-secrets
+              key: AUTH_GITHUB_CLIENT_ID
+        - name: AUTH_GITHUB_CLIENT_SECRET
+          valueFrom:
+            secretKeyRef:
+              name: backstage-secrets
+              key: AUTH_GITHUB_CLIENT_SECRET
+      dnsPolicy: ClusterFirst
+      restartPolicy: Always
 status: {}
 EOF
 

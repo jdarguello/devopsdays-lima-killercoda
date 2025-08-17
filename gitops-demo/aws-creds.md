@@ -73,15 +73,9 @@ spec:
   target:
     name: github-secrets
     creationPolicy: Owner
-  data:
-  - secretKey: GITHUB_TOKEN
-    remoteRef:
-      key: github-creds
-      version: AWSCURRENT
-      property: GITHUB_TOKEN
   dataFrom:
   - extract:
-      key: remote-key-in-the-provider
+      key: github-creds
 ```{{exec}}
 
 ### 3. Acceso al EKS

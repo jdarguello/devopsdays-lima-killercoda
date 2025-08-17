@@ -61,6 +61,7 @@ EOF
 Finalmente, procedemos a obtener los secretos desde el AWS Secrets Manager ejecutando:
 
 ```bash
+k create -f - << EOF
 apiVersion: external-secrets.io/v1
 kind: ExternalSecret
 metadata:
@@ -76,6 +77,7 @@ spec:
   dataFrom:
   - extract:
       key: github-creds
+EOF
 ```{{exec}}
 
 ### 3. Acceso al EKS

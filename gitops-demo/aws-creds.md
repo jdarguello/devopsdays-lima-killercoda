@@ -20,7 +20,69 @@ El __External-Secrets__ se trata de un operador de K8s que permite la ingesta de
 
 Figura 1. Funcionamiento base del _External-Secrets_.
 
+En este caso, lo usaremos para importar los secretos desplegados en AWS Secrets Manager para la configuración de Backstage, que usaremos más adelante.
 
+#### 2.1. Credenciales de AWS como secretos de K8s
+
+Para importar los secretos de AWS, primero necesitamos brindarle al controlador del _External-Secrets_ las credenciales de la cuenta de AWS para que pueda conectarse a ella e importar los otros secretos respectivos. Sólo debes reemplazar las credenciales de AWS en las secciones respectivas del siguiente comando y ejecutarlo.
+
+```bash
+k create secret generic awssm-secret --from-literal=access-key=<aws_access_key_id> --from-literal=secret-access-key=<aws_secret_access_key>
+```{{copy}}
+
+#### 2.2. Definición del `SecretStore`
+
+El `SecretStore` se trata de un CRD (_"Custom-Resource Definition"_) en K8s empleado para configurar el controlador del _External-Secrets_ y que entienda a cuál cuenta de AWS debe conectarse para buscar los secretos.
+
+```bash
+k create -f - <<EOF
+apiVersion: external-secrets.io/v1
+kind: SecretStore
+metadata:
+  name: aws-secretstore
+spec:
+  provider:
+    aws:
+      service: SecretsManager
+      region: us-east-1
+      auth:
+        secretRef:
+          accessKeyIDSecretRef:
+            name: awssm-secret
+            key: access-key
+          secretAccessKeySecretRef:
+            name: awssm-secret
+            key: secret-access-key
+EOF
+```{{exec}}
+
+#### 2.3. Vinculación de secretos via `ExternalSecret`
+
+Finalmente, procedemos a obtener los secretos desde el AWS Secrets Manager ejecutando:
+
+```bash
+apiVersion: external-secrets.io/v1
+kind: ExternalSecret
+metadata:
+  name: github-external-secrets
+spec:
+  refreshInterval: 1h
+  secretStoreRef:
+    name: aws-secretstore
+    kind: SecretStore
+  target:
+    name: github-secrets
+    creationPolicy: Owner
+  data:
+  - secretKey: GITHUB_TOKEN
+    remoteRef:
+      key: github-creds
+      version: AWSCURRENT
+      property: GITHUB_TOKEN
+  dataFrom:
+  - extract:
+      key: remote-key-in-the-provider
+```{{exec}}
 
 ### 3. Acceso al EKS
 

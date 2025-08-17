@@ -9,8 +9,7 @@ export current_context=$(k config current-context)
 k config set-context kubernetes-admin@kubernetes
 k get pods
 k config set-context $current_context
-```
-{{exec}}
+```{{exec}}
 
 ### 1. Abrir Backstage
 
@@ -22,8 +21,7 @@ k config set-context kubernetes-admin@kubernetes
 export node_port=$(k get -n ingress-nginx svc/ingress-nginx-controller -o jsonpath="{.spec.ports[0].nodePort}")
 echo "Puerto = $node_port"
 k config set-context $current_context
-```
-{{exec}}
+```{{exec}}
 
 Para abrir Backstage, debemos ir a la sección de configuración de __"Traffic / Ports"__ que puedes acceder haciendo click aquí: {{TRAFFIC_SELECTOR}}.
 

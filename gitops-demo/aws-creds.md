@@ -72,7 +72,7 @@ spec:
     name: aws-secretstore
     kind: SecretStore
   target:
-    name: github-secrets
+    name: backstage-secrets
     creationPolicy: Owner
   dataFrom:
   - extract:

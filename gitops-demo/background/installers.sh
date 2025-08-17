@@ -21,4 +21,4 @@ curl -s https://fluxcd.io/install.sh | sudo bash
 . <(flux completion bash)
 
 #devbox
-curl -fsSL https://get.jetify.com/devbox | bash
+curl -fsSL https://get.jetify.com/devbox | sudo bash

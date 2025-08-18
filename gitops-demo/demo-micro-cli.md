@@ -40,5 +40,5 @@ nu
 Para crear el nuevo microservicio de cuentas bancarias, lo único que tendremos que hacer es ejecutar el siguiente comando:
 
 ```bash
-bancli service back-db new --businessflow-name=Inversiones-Cluster --micro-name=CuentasBancarias --image=nginx --replicas=2
+bancli service back-db new --businessflow-name=Inversiones --micro-name=CuentasBancarias --image=nginx --replicas=2
 ```{{copy}}

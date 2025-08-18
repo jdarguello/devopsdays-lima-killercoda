@@ -29,9 +29,9 @@ Ahora, lo único que debes hacer es pegar el puerto, obtenido al principio de es
 
 ### 2. Interacción con Backstage
 
-En este punto, ya tienes acceso a Backstage y puedes interactuar con la plataforma a voluntad. La recomendación es que te enfoques en la edición de los templates expuestos para la creación del microservicio, a través del tempalte __"Service BackDB"__, que habilitaría la generación de un `deployment`, un `service` y una AWS RDS con PostgreSQL.
+En este punto, ya tienes acceso a Backstage y puedes interactuar con la plataforma a voluntad. La recomendación es que te enfoques en la edición de los templates expuestos para la creación del microservicio, a través del tempalte __"Service Back DB"__, que habilitaría la generación de un `deployment`, un `service` y una AWS RDS con PostgreSQL.
 
-Otra opción a la que también tienes acceso es a la de generar un nuevo flujo de negocio (a través del template: _"Flujo de Negocio"_). Sin embargo, te recomiendo usar la primera opción y familiarizarte con ella.
+Otra opción a la que también tienes acceso es a la de generar un nuevo flujo de negocio (a través del template: _"Flujo de Negocio"_). Sin embargo, te recomiendo usar la primera opción y familiarizarte con ella primero antes de adentrarte con esta alternativa.
 
 Independientemente de la opción que prefieras, para que se ejecute correctamente, tendrás que compartirle las credenciales de AWS y de GitHub para que funcione correctamente. Esas credenciales ya fueron configuradas en la primera sección de este demo y puedes obtener esa información ejecutando el siguiente comando:
 

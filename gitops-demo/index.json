@@ -11,7 +11,10 @@
         "text": "aws-creds.md"
       },
       {
-        "text": "demo-micro-manual.md",
+        "text": "demo-micro-manual.md"
+      },
+      {
+        "text": "demo-micro-cli.md",
         "foreground": "background/cli.sh"
       },
       {

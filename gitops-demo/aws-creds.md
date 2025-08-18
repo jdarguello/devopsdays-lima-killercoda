@@ -24,11 +24,19 @@ En este caso, lo usaremos para importar los secretos desplegados en AWS Secrets 
 
 #### 2.1. Credenciales de AWS como secretos de K8s
 
-Para importar los secretos de AWS, primero necesitamos brindarle al controlador del _External-Secrets_ las credenciales de la cuenta de AWS para que pueda conectarse a ella e importar los otros secretos respectivos. Sólo debes reemplazar las credenciales de AWS en las secciones respectivas del siguiente comando y ejecutarlo.
+Para importar los secretos de AWS, primero necesitamos brindarle al controlador del _External-Secrets_ las credenciales de la cuenta de AWS para que pueda conectarse a ella e importar los otros secretos respectivos. Sólo debes reemplazar las credenciales de AWS en las secciones respectivas de los siguiente comandos y ejecutarlos.
 
 ```bash
-k create secret generic awssm-secret --from-literal=access-key=<aws_access_key_id> --from-literal=secret-access-key=<aws_secret_access_key>
+export AWS_ACCESS_KEY_ID=<key_id>
 ```{{copy}}
+
+```bash
+export AWS_SECRET_ACCESS_KEY=<secret_key>
+```{{copy}}
+
+```bash
+k create secret generic awssm-secret --from-literal=access-key=$AWS_ACCESS_KEY_ID --from-literal=secret-access-key=$AWS_SECRET_ACCESS_KEY
+```{{exec}}
 
 #### 2.2. Definición del `SecretStore`
 

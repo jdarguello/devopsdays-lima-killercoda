@@ -20,5 +20,8 @@ sudo ./aws/install
 curl -s https://fluxcd.io/install.sh | sudo bash
 . <(flux completion bash)
 
-#devbox
-curl -fsSL https://get.jetify.com/devbox | sudo bash
+#Nushell
+curl -fsSL https://apt.fury.io/nushell/gpg.key | sudo gpg --dearmor -o /etc/apt/trusted.gpg.d/fury-nushell.gpg
+echo "deb https://apt.fury.io/nushell/ /" | sudo tee /etc/apt/sources.list.d/fury.list
+sudo apt update
+sudo apt install nushell

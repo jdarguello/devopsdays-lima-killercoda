@@ -37,12 +37,12 @@ nu
 
 ### 3. Creación del microservicio
 
-Para crear el nuevo microservicio de cuentas bancarias, lo único que tendremos que hacer es definir la siguiente variable de entorno, que corresponde al número del proyecto que tienes (__si ya lo definiste, puedes obviar este paso__), y ejecutar el siguiente comando:
+Para crear el nuevo microservicio de cuentas bancarias, lo único que tendremos que hacer es definir la siguiente variable de entorno, que corresponde al número del proyecto que tienes y ejecutar el siguiente comando:
 
-```bash
-export numero_proyecto=<#>
+```nushell
+let numero_proyecto = <#>
 ```{{copy}}
 
-```bash
-bancli service back-db new --businessflow-name=Inversiones$numero_proyecto --micro-name=cuentas$numero_proyecto --image=nginx --replicas=2
+```nushell
+bancli service back-db new --businessflow-name=$"Inversiones($numero_proyecto)" --micro-name=cuentas --image=nginx --replicas=2
 ```{{copy}}

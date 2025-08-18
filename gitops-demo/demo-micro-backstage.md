@@ -44,6 +44,12 @@ kubectl get secrets backstage-secrets -o jsonpath="{.data}" | jq 'walk(
   else .
   end
 )'
+kubectl get secrets awssm-secret -o jsonpath="{.data}" | jq 'walk(
+  if type == "string" then
+    try (. | @base64d) catch .
+  else .
+  end
+)'
 kubectl config set-context $current_context
 ```{{exec}}
 

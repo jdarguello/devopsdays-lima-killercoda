@@ -2,7 +2,7 @@
 export current_context=$(k config current-context)
 
 #Cambio al cluster local
-k config set-context kubernetes-admin@kubernetes
+kubectl config set-context kubernetes-admin@kubernetes
 
 #Pod creation
 kubectl apply -f - <<'EOF'
@@ -54,7 +54,7 @@ status: {}
 EOF
 
 #Svc creation
-k create -f - << 'EOF'
+kubectl create -f - << 'EOF'
 apiVersion: v1
 kind: Service
 metadata:
@@ -73,7 +73,7 @@ status:
 EOF
 
 #Ingress creation
-k create -f - << 'EOF'
+kubectl create -f - << 'EOF'
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
@@ -95,4 +95,4 @@ status:
 EOF
 
 #Retornar al cluster del usuario
-k config set-context $current_context
+kubectl config set-context $current_context

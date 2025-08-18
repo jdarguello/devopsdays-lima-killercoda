@@ -8,7 +8,7 @@ Iniciaremos con la instalación de Devbox a través del siguiente comando:
 
 ```bash
 curl -fsSL https://get.jetify.com/devbox | sudo bash
-```
+```{{exec}}
 
 Instalaremos Nushell de la siguiente forma:
 
@@ -17,7 +17,7 @@ curl -fsSL https://apt.fury.io/nushell/gpg.key | sudo gpg --dearmor -o /etc/apt/
 echo "deb https://apt.fury.io/nushell/ /" | sudo tee /etc/apt/sources.list.d/fury.list
 sudo apt update
 sudo apt install nushell
-```
+```{{exec}}
 
 ### 2. Acceso a la CLI
 
@@ -26,19 +26,23 @@ Ahora, instalaremos las dependencias base de la CLI con Devbox, ejecutando el si
 ```bash
 cd ~/CloudManager/platform-engineering/CLI/
 devbox shell
-```
+```{{copy}}
 
 Con ello, ya podemos acceder a la CLI ejecutando:
 
 ```bash
 cd ~/CloudManager/platform-engineering/CLI/
 nu
-```
+```{{copy}}
 
 ### 3. Creación del microservicio
 
-Para crear el nuevo microservicio de cuentas bancarias, lo único que tendremos que hacer es ejecutar el siguiente comando:
+Para crear el nuevo microservicio de cuentas bancarias, lo único que tendremos que hacer es definir la siguiente variable de entorno, que corresponde al número del proyecto que tienes, y ejecutar el siguiente comando:
 
 ```bash
-bancli service back-db new --businessflow-name=Inversiones --micro-name=CuentasBancarias --image=nginx --replicas=2
+export numero_proyecto=<#>
+```{{copy}}
+
+```bash
+bancli service back-db new --businessflow-name=Inversiones$numero_proyecto --micro-name=cuentas$numero_proyecto --image=nginx --replicas=2
 ```{{copy}}

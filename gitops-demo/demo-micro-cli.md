@@ -44,5 +44,5 @@ let numero_proyecto = <#>
 ```{{copy}}
 
 ```nushell
-bancli service back-db new --businessflow-name=$"Inversiones($numero_proyecto)" --micro-name=cuentas --image=nginx --replicas=2
+bancli service back-db new --businessflow-name=$"Inversiones($numero_proyecto)" --micro-name=$"cuentas($numero_proyecto)" --image=nginx --replicas=2
 ```{{copy}}

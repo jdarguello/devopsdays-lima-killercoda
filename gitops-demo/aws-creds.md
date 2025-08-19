@@ -112,7 +112,7 @@ aws eks associate-access-policy \
   --region "$REGION" \
   --cluster-name "$CLUSTER" \
   --principal-arn "$PRINCIPAL_ARN" \
-  --policy-arn arn:aws:eks::aws:cluster-access-policy/AmazonEKSViewPolicy \
+  --policy-arn arn:aws:eks::aws:cluster-access-policy/AmazonEKSAdminViewPolicy \
   --access-scope type=cluster
 
 aws eks update-kubeconfig --region $REGION --name $CLUSTER

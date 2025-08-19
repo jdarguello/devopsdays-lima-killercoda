@@ -1,5 +1,6 @@
 #Usar el contexto del clúster local
 export current_context=$(k config current-context)
+kubectl config use-context kubernetes-admin@kubernetes
 
 #Descargar el repositorio con el custom-cli
 cd ~/

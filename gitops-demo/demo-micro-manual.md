@@ -85,7 +85,7 @@ apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 resources:
 - ns.yaml
-- auth.yaml
+- micro.yaml
 ```{{copy}}
 
 Después, procederemos a crear el namespace de nuestro micro (`infra/kubernetes/auth/ns.yaml`):

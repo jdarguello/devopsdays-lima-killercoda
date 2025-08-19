@@ -123,6 +123,8 @@ Una vez agregado el microservicio, procedemos a subir los cambios ejecutando el 
 ```bash
 cd ~/$GITHUB_REPO
 git pull
+git config --global user.email "lima-demos-days@github.com"
+git config --global user.name "lima-demos-days"
 git add .
 git commit -m "micro de autenticación"
 git push

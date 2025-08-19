@@ -46,3 +46,5 @@ let numero_proyecto = <#>
 ```nushell
 bancli service back-db new --businessflow-name=$"Inversiones($numero_proyecto)" --micro-name=$"cuentas($numero_proyecto)" --image=nginx --replicas=2
 ```{{copy}}
+
+__NOTA:__ una vez termines tu interacción con el CLI, ejecuta __`exit`__ dos veces para salir, tanto de Nushell como de Devbox, y que puedas continuar con el presente demo.

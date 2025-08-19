@@ -90,13 +90,35 @@ EOF
 
 ### 3. Acceso al EKS
 
-Ya configuradas las credenciales de conexión a AWS, podemos conectarnos al clúster de EKS ejecutando el siguiente comando:
+Ya configuradas las credenciales de conexión a AWS, podemos conectarnos al clúster de EKS que requiramos ejecutando el siguiente comando:
 
 ```bash
-aws eks update-kubeconfig --region us-east-1 --name Cuentas-Cluster
+export CLUSTER=<nombre_cluster>
 ```{{copy}}
 
-Si ejecuta de forma exitosa, de aquí en adelante todos los comandos de K8s que ejecutes serán contra el clúster de __Cuentas-Cluster__ en AWS EKS. Por ejemplo, deberías poder listar los namespaces de la cuenta sin problema con `k get ns`{{exec}} y encontrar namesapces como `flux-system` o `crossplane-system`, que indican la instalación de estos componentes dentro del clúster.
+```bash
+export REGION=us-east-1
+export PRINCIPAL_ARN=$(aws sts get-caller-identity | jq -r '.Arn')
+
+# Create the access entry (idempotent-ish; ignore "already exists")
+aws eks create-access-entry \
+  --region "$REGION" \
+  --cluster-name "$CLUSTER" \
+  --principal-arn "$PRINCIPAL_ARN" \
+  --type STANDARD
+
+# Now associate the read-only Kubernetes policy
+aws eks associate-access-policy \
+  --region "$REGION" \
+  --cluster-name "$CLUSTER" \
+  --principal-arn "$PRINCIPAL_ARN" \
+  --policy-arn arn:aws:eks::aws:cluster-access-policy/AmazonEKSViewPolicy \
+  --access-scope type=cluster
+
+aws eks update-kubeconfig --region $REGION --name $CLUSTER
+```{{exec}}
+
+Si ejecuta de forma exitosa, de aquí en adelante todos los comandos de K8s que ejecutes serán contra el clúster de __Inversiones-Cluster__ en AWS EKS. Por ejemplo, deberías poder listar los namespaces de la cuenta sin problema con `k get ns`{{exec}} y encontrar namesapces como `flux-system` o `crossplane-system`, que indican la instalación de estos componentes dentro del clúster.
 
 ### 4. Acceso a otros recursos
 

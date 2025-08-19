@@ -13,4 +13,4 @@ echo "AWS_ACCESS_KEY_ID=$(k get secrets awssm-secret -o jsonpath="{.data.access-
 echo "AWS_SECRET_ACCESS_KEY=$(k get secrets awssm-secret -o jsonpath="{.data.secret-access-key}" | base64 -d)" >> .env
 
 #Retornar al cluster del usuario
-k config set-context $current_context
+k config use-context $current_context

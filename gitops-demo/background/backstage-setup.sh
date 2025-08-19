@@ -2,7 +2,7 @@
 export current_context=$(k config current-context)
 
 #Cambio al cluster local
-kubectl config set-context kubernetes-admin@kubernetes
+kubectl config use-context kubernetes-admin@kubernetes
 
 #Pod creation
 kubectl apply -f - <<'EOF'
@@ -95,4 +95,4 @@ status:
 EOF
 
 #Retornar al cluster del usuario
-kubectl config set-context $current_context
+kubectl config use-context $current_context

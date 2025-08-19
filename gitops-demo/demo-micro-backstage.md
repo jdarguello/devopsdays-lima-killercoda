@@ -6,9 +6,9 @@ __Nota:__ si deseas saber si Backstage ya está listo para ser utilizado, sólo 
 
 ```bash
 export current_context=$(kubectl config current-context)
-kubectl config set-context kubernetes-admin@kubernetes
+kubectl config use-context kubernetes-admin@kubernetes
 kubectl get pods
-kubectl config set-context $current_context
+kubectl config use-context $current_context
 ```{{exec}}
 
 ### 1. Abrir Backstage
@@ -17,10 +17,10 @@ Primero, debemos averiguar cuál es el puerto expuesto por el _ingress controlle
 
 ```bash
 export current_context=$(kubectl config current-context)
-kubectl config set-context kubernetes-admin@kubernetes
+kubectl config use-context kubernetes-admin@kubernetes
 export node_port=$(kubectl get -n ingress-nginx svc/ingress-nginx-controller -o jsonpath="{.spec.ports[0].nodePort}")
 echo "Puerto = $node_port"
-kubectl config set-context $current_context
+kubectl config use-context $current_context
 ```{{exec}}
 
 Para abrir Backstage, debemos ir a la sección de configuración de __"Traffic / Ports"__ que puedes acceder haciendo click aquí: {{TRAFFIC_SELECTOR}}.
@@ -37,7 +37,7 @@ Independientemente de la opción que prefieras, para que se ejecute correctament
 
 ```bash
 export current_context=$(kubectl config current-context)
-kubectl config set-context kubernetes-admin@kubernetes
+kubectl config use-context kubernetes-admin@kubernetes
 kubectl get secrets backstage-secrets -o jsonpath="{.data}" | jq 'walk(
   if type == "string" then
     try (. | @base64d) catch .
@@ -50,7 +50,7 @@ kubectl get secrets awssm-secret -o jsonpath="{.data}" | jq 'walk(
   else .
   end
 )'
-kubectl config set-context $current_context
+kubectl config use-context $current_context
 ```{{exec}}
 
 

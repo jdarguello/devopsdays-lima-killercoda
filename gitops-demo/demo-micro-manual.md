@@ -14,13 +14,13 @@ Ahora, procedemos a clonarlo a través del siguiente comando.
 
 ```bash
 export current_context=$(k config current-context)
-k config set-context kubernetes-admin@kubernetes
+k config use-context kubernetes-admin@kubernetes
 
 export GITHUB_USERNAME="lima-demos-days"
 export GITHUB_TOKEN=$(k get secrets backstage-secrets -o jsonpath="{.data.GITHUB_TOKEN}" | base64 -d) 
 git clone https://$GITHUB_USERNAME:$GITHUB_TOKEN@github.com/$GITHUB_USERNAME/$GITHUB_REPO
 
-k config set-context $current_context
+k config use-context $current_context
 ```{{exec}}
 
 ### 2. Manifiestos de K8s

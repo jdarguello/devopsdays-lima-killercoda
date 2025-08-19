@@ -105,7 +105,7 @@ aws eks create-access-entry \
   --region "$REGION" \
   --cluster-name "$CLUSTER" \
   --principal-arn "$PRINCIPAL_ARN" \
-  --type STANDARD
+  --type STANDARD 2>/dev/null || true
 
 # Now associate the read-only Kubernetes policy
 aws eks associate-access-policy \
